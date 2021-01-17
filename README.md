@@ -4,3 +4,9 @@
 [![ci](https://github.com/yuta24/SwiftULID/workflows/ci/badge.svg)](https://github.com/yuta24/SwiftULID/actions?query=workflow%3Aci)
 
 This is a implementation of the [ulid](https://github.com/ulid/spec).
+
+## Feature
+
+- [x] ULID generation
+- [ ] Monotonicity
+- [ ] Binary implementation
