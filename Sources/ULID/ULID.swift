@@ -64,7 +64,7 @@ public struct ULID: Hashable, Comparable, CustomStringConvertible {
 
     private func encode<T: BinaryInteger>(_ value: T, count: UInt) -> String {
         let charactors: [String] = (0..<count).map { i in
-            let value = value >> ((count - 1 - i) * 8)
+            let value = value >> ((count - 1 - i) * 5)
             let index = Int(value & 0x1F)
             return Base32.encoding[index]
         }
