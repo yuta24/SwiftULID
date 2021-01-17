@@ -1,10 +1,18 @@
 import Foundation
 
 public struct ULID: Hashable, Comparable, CustomStringConvertible {
-    public static func create(_ date: Date = .init()) -> ULID {
+    public static func create<G: RandomNumberGenerator>(_ date: Date = .init(), gen: inout G) -> ULID {
         return .init(
             timestamp: Timestamp(date),
-            randomness: Randomness()
+            randomness: Randomness(gen: &gen)
+        )
+    }
+
+    public static func create(_ date: Date = .init()) -> ULID {
+        var gen = SystemRandomNumberGenerator()
+        return .init(
+            timestamp: Timestamp(date),
+            randomness: Randomness(gen: &gen)
         )
     }
 

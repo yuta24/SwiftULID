@@ -16,9 +16,9 @@ struct Randomness: Hashable, Equatable {
 
     var value: (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
 
-    init() {
-        let bits16 = UInt16.random(in: .min ... .max)
-        let bits64 = UInt64.random(in: .min ... .max)
+    init<G: RandomNumberGenerator>(gen: inout G) {
+        let bits16 = UInt16.random(in: .min ... .max, using: &gen)
+        let bits64 = UInt64.random(in: .min ... .max, using: &gen)
 
         self.value = (
             UInt8(truncatingIfNeeded: bits16 >>  8),
